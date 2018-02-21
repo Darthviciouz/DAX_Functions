@@ -26,3 +26,19 @@ CALCULATE (
         'Date'[Date] <= MAX ( 'Date'[Date] )
     )
 )
+
+
+
+Measure = IF (
+    HASONEVALUE ( Datetable[Year]  )
+        && HASONEVALUE (Datetable[Weeknumber] ),
+		CALCULATE(SUM('Complete Countries This Year'[Goal This Years]),
+	   FILTER (
+            ALL ( Datetable ),
+           Datetable[Year] = VALUES ( Datetable[Year] )
+                &&  Datetable[Weeknumber] = VALUES ( Datetable[Weeknumber] )
+                && Datetable[Weeknumber] <= MAX ( Datetable[Weeknumber] )
+        )
+    ),
+    BLANK ()
+)
