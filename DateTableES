@@ -1,0 +1,17 @@
+Calendario = ADDCOLUMNS (
+CALENDAR ( "1-jan-2017", Today()),
+"FechaEnEntero", FORMAT ( [Date], "YYYYMMDD" ),
+"Año", YEAR ( [Date] ),
+"MesNumero", FORMAT ( [Date], "MM" ),
+"SemanaNumero", WEEKNUM ( [Date], 2 ),
+"AñoMesNumero", FORMAT ( [Date], "YYYY/MM" ),
+"AñoMescorto", FORMAT ( [Date], "YYYY/mmm" ),
+"MesCalendario", FORMAT ( [Date], "mmm" ),
+"MesCompleto", FORMAT ( [Date], "mmmm" ),
+"DiaSemanaNumero", WEEKday ( [Date], 2 ),
+"DiadelaSemana", FORMAT ( [Date], "dddd" ),
+"DiaSemanacorto", FORMAT ( [Date], "dddd" ),
+"Trimestre", "Q" & FORMAT ( [Date], "Q" ),
+"AñoTrimestre", FORMAT ( [Date], "YYYY" ) & "/Q" & FORMAT ( [Date], "Q" ),
+"SemanaAño", WEEKNUM ([Date], 2) &"-"& FORMAT ( [Date], "YYYY" )
+)
