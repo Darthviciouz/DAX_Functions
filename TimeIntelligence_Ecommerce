@@ -1,0 +1,47 @@
+ROASañoAnterior =
+  CALCULATE (
+    SUM ( AMS_Overview[Sales] ),
+    SAMEPERIODLASTYEAR ( Calendario[Fechas] )
+  )
+
+ROASAñoActual =
+  [ROAS]
+
+  CPC Último Trimestre =
+  TOTALQTD ( [CPC], DateTable[Date] )
+  
+ACOS Pronosticado =
+  CALCULATE (
+    AVERAGE ( ACoSTable[ACOS] ), STARTOFMONTH ( LASTDATE ( Datetable[Date] ) )
+  )
+
+ACOS Actual Mes =
+  CALCULATE ( 
+    [ACoS], 
+    DATESMTD ( 
+      Datetable[Date] ) 
+   )
+
+ACOS Anual=
+  CALCULATE (
+    AVERAGE ( ACoSTable[ACOS] )
+  )
+
+CTR 60 Días =
+CALCULATE (
+    [CTR],
+    DATEADD (
+        DATESINPERIOD ( Datetable[Date], LASTDATE ( Datetable[Date] ), -30, DAY ),
+        -30,
+        DAY
+    )
+)
+
+CTR 30 Días =
+CALCULATE (
+    [CTR],
+    DATESINPERIOD ( Datetable[Date], LASTDATE ( Datetable[Date] ), -30, DAY )
+)
+
+
+
